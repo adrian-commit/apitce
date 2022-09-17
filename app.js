@@ -61,6 +61,8 @@ app.get('/api/tasks/:id',(req,res)=>{
     })
 });
 
+
+
 //*2-clients
 //(localhost:3030/api/clients/)//
 
@@ -75,6 +77,17 @@ app.get('/api/clients',(req,res)=>{
     })
 });
 
+//Para que me traiga todos los registros pero de manera simple
+app.get('/api/clients/allSingle',(req,res)=>{ 
+    conexion.query('SELECT * FROM clients ',(error,filas) =>{
+        if(error){
+            throw error;
+        }else{
+
+            res.send(filas);
+        }
+    })
+});
 
 //Para que me traiga un solo registro
 app.get('/api/clients/:id',(req,res)=>{
@@ -117,11 +130,17 @@ app.get('/api/services/:id',(req,res)=>{
 });
 
 
-
-
-
-
-
+//usuarios
+//para que me traiga todos los usuarios
+app.get('/api/users', (req,res)=>{
+    conexion.query('SELECT * FROM users ', (error, filas)=>{
+        if(error){
+            throw error;
+        }else{
+            res.send(filas);
+        }
+    })
+});
 
 
 
